@@ -8,17 +8,10 @@
     <title>Tailwind CSS Boilerplate</title>
 
     <link rel="stylesheet" href="css/main.css" />
-
-    <script
-      async
-      defer
-      data-domain="open.michelegera.dev"
-      src="https://plausible.io/js/plausible.js"
-    ></script>
   </head>
 
   <body
-    class="relative antialiased tracking-tight text-gray-500 bg-black font-inter"
+    class="relative antialiased tracking-tight text-gray-500 bg-black font-inter overflow-x-hidden"
   >
     <div class="absolute inset-0 bg-top bg-no-repeat bg-illustration-01"></div>
     <div
@@ -70,7 +63,7 @@
           View on Github
         </a>
       </div>
-      <div class="mb-16">
+      <div class="mb-16 animatecss animatecss-fadeInUp">
         <img
           class="block w-full max-w-5xl mx-auto rounded"
           src="img/video-placeholder.jpg"
@@ -184,17 +177,15 @@
           officia deserunt mollit anim id est laborum — semper quis lectus nulla
           at volutpat diam ut venenatis.
         </p>
-        <div class="flex flex-col mb-8 sm:flex-row">
-          <div class="flex items-center mb-8 sm:w-1/2 md:w-5/12 sm:order-last">
+        <div class="flex flex-col mb-8 sm:flex-row mm-wrapper">
+          <div class="flex items-center mb-8 sm:w-1/2 md:w-5/12 sm:order-last mm-right animatecss animatecss-slideInRight">
             <img
               class="rounded-sm"
               src="img/features-split-image-01.png"
               alt=""
             />
           </div>
-          <div
-            class="flex flex-col justify-center mb-8 sm:w-1/2 md:w-7/12 sm:pr-16"
-          >
+          <div class="flex flex-col justify-center mb-8 sm:w-1/2 md:w-7/12 sm:pr-16 mm-left animatecss animatecss-slideInLeft">
             <p
               class="mb-2 text-sm font-semibold leading-none text-center text-indigo-600 uppercase sm:text-left"
             >
@@ -490,5 +481,21 @@
         </ul>
       </div>
     </div>
+    <script type="text/javascript">
+      const observer1 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const mmr = entry.target.querySelector('.mm-right');
+          const mml = entry.target.querySelector('.mm-left');
+          if (entry.isIntersecting) {
+            mmr.classList.add('animatecss-slideInRight');
+            mml.classList.add('animatecss-slideInLeft');
+            return;
+          }
+          mmr.classList.remove('animatecss-slideInRight');
+          mml.classList.remove('animatecss-slideInLeft');
+        })
+      });
+      observer1.observe(document.querySelector('.mm-wrapper'));
+    </script>
   </body>
 </html>

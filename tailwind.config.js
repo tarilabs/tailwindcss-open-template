@@ -41,5 +41,8 @@ module.exports = {
       "6xl": "4rem",
     },
   },
-  plugins: [require("tailwindcss-font-inter")()],
+  plugins: [
+    require('tailwind-animatecss'),
+    require("tailwindcss-font-inter")()
+  ],
 };
